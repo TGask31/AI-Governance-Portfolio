@@ -1,7 +1,39 @@
 Platform Overview
 
 •	What is it?
+Perplexity Enterprise Pro is the organization's officially adopted AI-powered research and answer platform. As of our enterprise licensing agreement, it is available to all full-time employees, contractors, and part-time staff as a sanctioned workplace tool.Perplexity operates as an intelligent answer engine. It is architecturally distinct from consumer search tools like Google and from general-purpose AI assistants like ChatGPT. Where a search engine returns links and a standalone AI generates responses from a fixed training dataset, Perplexity retrieves live information from the web and from our organization's own internal documents, synthesizes that information, and returns a direct, source-cited answer. Every response is traceable to the references that produced it.The platform runs on a multi-model architecture, drawing from leading AI systems including GPT-5.2, Claude Sonnet, Gemini, and Perplexity's proprietary Sonar model. Query routing is automatic, meaning the platform selects the most capable model for each request without requiring any action from the user. Employees access the platform through existing organizational credentials. No separate account, no additional software, and no technical background is required.
+
 •	What does it do?
+Perplexity delivers four core capabilities under a single platform license:
+
+Real-Time Research and Answer Generation
+Users submit queries in plain language. The platform simultaneously searches the live internet and connected internal repositories, analyzes the retrieved content, and returns a structured, citation-backed answer. Responses reflect current information, not a static knowledge base with a training cutoff.
+
+Internal Knowledge Search
+Through direct integrations with our connected file systems, including SharePoint, Google Drive, and OneDrive, Perplexity searches organizational documents alongside public web content in a single query. Access permissions established in those source systems are preserved exactly, meaning employees only retrieve content they are already authorized to access.
+
+Deep Research. 
+For complex, multi-faceted questions, Perplexity conducts layered, multi-source analysis and produces a structured research report with full citations. This capability is the functional equivalent of a documented research deliverable, produced in minutes rather than hours or days.
+
+Agentic Task Execution. For approved users, Perplexity's Computer feature extends beyond answering questions to executing tasks across connected business systems. This includes querying databases, retrieving CRM data, posting outputs to Slack, and executing multi-step workflows across platforms from a single interface. All agentic actions are logged and auditable.
+
 •	Who would use it?
+Perplexity Enterprise Pro is available to and intended for the full enterprise workforce, specifically full-time employees, contractors, and part-time staff across all departments and functions. The platform is role-agnostic by design. A communications professional uses it to research, source, and support content development. A legal or compliance team member uses it to monitor regulatory changes and conduct background research. A manager uses it to prepare for strategic conversations or quickly brief leadership. An HR professional uses it to benchmark policy and summarize complex documentation. An IT or security team member uses it to track threat intelligence or evaluate vendors. A contractor uses it to get up to speed quickly and work efficiently within the scope of their engagement. Access levels and feature permissions are determined by role and managed centrally by IT administration. Not every user will have access to every feature. Agentic capabilities, for example, are restricted to approved users as defined by governance policy.
+
 •	What business problem does it solve?
+The organization faces a productivity and governance challenge that is common across enterprises: information is scattered, retrieval is slow, and the tools employees use to fill that gap are often outside organizational control. Employees routinely spend significant time searching across disconnected systems, reconciling conflicting sources, and producing research outputs with no verifiable trail. The cost of that inefficiency accumulates across every department, every day. Perplexity addresses this directly by consolidating information retrieval into a single governed interface. Internal documents and live web content are searched together. Answers are sourced and documentable. Research timelines are compressed without sacrificing accuracy or traceability. The governance dimension is equally important. In the absence of an enterprise AI tool, employees default to personal accounts on consumer AI platforms, introducing data exposure risk that the organization cannot monitor, control, or remediate. Perplexity Enterprise Pro eliminates that gap by providing a secure, auditable, policy-aligned alternative that meets employees where their productivity needs are, while keeping all AI activity within the organization's governance boundary.
+
 •	What integrations exist?
+Perplexity Enterprise Pro is designed to operate within existing enterprise technology ecosystems rather than alongside them as a separate system.
+
+File Storage and Document Repositories
+The platform connects natively to SharePoint, Microsoft OneDrive, Google Drive, Box, and Dropbox. Connected file systems are searchable through Perplexity alongside live web content. Organizational access permissions in each source system are respected and enforced automatically.
+
+Identity and Access Management
+Perplexity integrates with Okta, Microsoft Entra ID, Google Workspace, and OneLogin via SAML 2.0 single sign-on. Employees authenticate using existing organizational credentials. User provisioning and deprovisioning is automated through SCIM, meaning access is granted and revoked in alignment with HR and IT workflows without manual intervention.
+
+Business and Productivity Systems
+Through the Computer agentic feature, Perplexity connects to Slack, Salesforce, Snowflake, HubSpot, and Datadog. These integrations are available to approved users and are subject to the access controls and audit requirements defined in the AI Governance policy.
+
+Specialty and Custom Data Sources
+The platform supports connections to Crunchbase for company and market intelligence and FactSet for financial data. For organizational systems not covered by prebuilt connectors, IT administrators can deploy custom integrations using the Model Context Protocol, extending Perplexity's reach to proprietary internal platforms as needed.
