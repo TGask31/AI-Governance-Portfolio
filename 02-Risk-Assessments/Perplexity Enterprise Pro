@@ -1,1 +1,72 @@
+Risk Assessments: Perplexity Enterprise Pro
+Security RiskRisk Description
+Perplexity Enterprise Pro connects to internal file repositories including SharePoint, Google Drive, and OneDrive. If organizational permissions within those source systems are broadly configured or improperly set at the time of connector deployment, employees may retrieve internal documents through Perplexity that they would not otherwise have direct access to. Additionally, because Perplexity retrieves and processes content from the live web and connected internal documents, the platform is exposed to prompt injection as an attack vector, where malicious instructions embedded in external or internal content could cause the AI model to override its intended behavior.
+Potential Impact
+Exposure of confidential internal documents including strategic plans, financial records, personnel files, or legal materials to unauthorized staff, contractors, or part-time employees. In a prompt injection scenario, the platform could generate harmful or misleading outputs or, in agentic use cases, take unintended actions in connected business systems.
+Risk Probability: Medium
+Proposed Mitigation: Conduct a full permission audit of all source systems before enabling connectors. Enforce SSO and MFA for all users across all employment types. Implement quarterly access reviews. Train users not to paste untrusted external content into query fields. Monitor Perplexity's published security advisories and apply Security Hub settings as they become available.
+Risk Owner: IT Security Administrator
 
+Privacy RiskRisk Description
+Across a full enterprise workforce of FTEs, contractors, and part-time staff, there is a meaningful probability that employees will input personally identifiable information into Perplexity queries or attach files containing PII to thread-level uploads. This may occur intentionally, such as an HR professional uploading a personnel file for summarization, or unintentionally, where an employee does not recognize that a document contains regulated personal data. Contractors present an elevated risk in this category, as they may input client or third-party personal data outside the scope of their engagement without understanding the governance implications.
+Potential Impact
+Unauthorized processing of personal data in potential violation of GDPR, CCPA, or other applicable privacy regulations. Depending on the nature of the data involved, this could trigger regulatory investigation, financial penalty, mandatory breach notification obligations, and third-party liability exposure for contractors handling client data.
+Risk Probability: Medium
+Proposed Mitigation
+Establish a clear data classification policy and train all employees, contractors, and part-time staff on which data categories are prohibited from platform use. Restrict file upload permissions in the Security Hub for roles with regular access to PII-heavy data. Develop a contractor-specific AUP addendum that explicitly addresses third-party and client data restrictions. Require AUP acknowledgment as a condition of access provisioning for all user types.
+Risk Owner: AI Governance Lead/ Legal
+
+Compliance RiskRisk Description
+Two distinct compliance risks apply to this deployment. First, if the organization operates in a healthcare-adjacent environment and employees process Protected Health Information through Perplexity without a signed Business Associate Agreement in place, the organization assumes full HIPAA liability. Second, Perplexity routes queries through General Purpose AI models including GPT-5.2, Claude Sonnet, and Gemini, all of which qualify as GPAI models under the EU AI Act. If the organization has employees, customers, or data subjects located in EU member states, the EU AI Act's transparency and documentation obligations may apply to the organization as a deploying entity.
+Potential Impact
+HIPAA violations carry civil monetary penalties ranging from $100 to $50,000 per violation with annual caps up to $1.9 million per violation category. EU AI Act non-compliance carries penalties of up to 3% of global annual turnover. Both scenarios carry significant reputational risk in addition to financial exposure.Risk Probability: MediumProposed Mitigation
+Confirm BAA availability with Perplexity's legal team and execute the agreement before any PHI-adjacent use is authorized. Prohibit PHI in the Acceptable Use Policy pending BAA confirmation. Conduct a data residency review with Perplexity to determine whether EU data residency options exist. Document GPAI model use and ensure transparency disclosures are in place for all employees interacting with AI-generated content.
+Risk Owner: Legal / Compliance / AI Governance Lead
+
+Third-Party and Vendor Risk
+Risk Description
+As a third-party SaaS platform, Perplexity Enterprise Pro represents a single-vendor dependency for AI-assisted research and knowledge retrieval across the full enterprise workforce. A service outage, security incident at the platform level, or platform discontinuation would have immediate and broad organizational impact. Additionally, Perplexity routes queries through third-party AI model providers including OpenAI, Anthropic, and Google. While Perplexity's Zero Data Retention policy is designed to prevent enterprise data from being used for model training, the organization's ability to independently verify this prohibition is limited to contractual assurance.
+
+Potential Impact
+Workforce productivity disruption in a service outage. Potential exposure of all organizational data processed through the platform in a security incident. Migration costs and operational disruption in a discontinuation scenario. IP leakage or competitive data exposure if third-party model providers access enterprise query data contrary to contractual commitments.
+Risk Probability: Low
+Proposed Mitigation
+Conduct annual vendor financial and security posture reviews. Maintain documented export procedures for all Spaces content. Require written contractual confirmation of the Zero Data Retention policy and third-party model data handling terms at contract execution and renewal. Include platform continuity provisions in the vendor contract.
+Risk Owner: Procurement / IT / Legal
+
+Data Protection Risk
+Risk Description
+Files attached directly to a Perplexity search thread are retained on the platform for seven days before automatic deletion.Employees who are not aware of this behavior may attach sensitive documents without understanding that a retention period applies. Separately, when SharePoint, Google Drive, or OneDrive is connected to the platform, any misconfiguration of organizational permissions in those source systems could result in employees accessing content through Perplexity that they are not authorized to access directly through the source system.
+Potential Impact
+Sensitive organizational data retained in a third-party environment beyond the user's awareness during the seven-day window. Internal confidentiality breach if connected repository permissions allow access beyond the intended scope. Regulatory and contractual risk in either scenario.
+Risk Probability: Medium
+
+Human Oversight Risk
+Risk Description
+Perplexity Enterprise Pro is designed to deliver fast, authoritative-sounding answers with citations. This creates a risk that employees across all functions will treat platform outputs as verified fact rather than as AI-synthesized starting points requiring human review. Hallucination remains a documented characteristic of all current large language models. Citation presence reduces but does not eliminate this risk. Additionally, for approved users of the Computer agentic feature, there is a risk that multi-step tasks execute in connected business systems without adequate human review of the proposed actions, resulting in unintended modifications to production data.
+Potential Impact
+Consequential business decisions made on inaccurate or hallucinated information across legal, compliance, financial, and operational functions. Unintended modification or deletion of records in connected production systems including Salesforce, Snowflake, or HubSpot. Audit and remediation costs. Regulatory consequence if affected systems contain regulated data.
+Risk Probability: High
+Proposed Mitigation
+Establish a mandatory citation verification standard in the Acceptable Use Policy requiring that primary cited sources be reviewed before any output informs a material decision. Deliver targeted training for high-risk functions on AI output limitations. Restrict Computer agentic access to a defined list of approved users who have completed specific agentic use training. Define a permitted action scope for each connected system before Computer is enabled for that system.
+Risk Owner: AI Governance Lead / Department Heads / IT Security Administrator
+
+Operational Risk
+Risk Description
+An enterprise-wide rollout across a workforce that includes FTEs, contractors, and part-time staff across multiple departments will not result in uniform adoption. Departments with low adoption, unclear use cases, or high proportions of contractors and part-time staff may see inconsistent training completion and limited governance awareness. These gaps create blind spots where employees may continue to use ungoverned consumer AI tools. Contractors and part-time staff present a structurally distinct challenge as they often join engagements mid-cycle and may be provisioned access before governance training is completed.
+Potential Impact
+Inequitable productivity outcomes across the organization. Persistent shadow AI use in low-adoption departments increasing overall AI risk exposure. Governance gaps and potential audit findings if documentation does not reflect actual usage patterns. Liability exposure if contractor use results in a data incident driven by insufficient onboarding.
+Risk Probability: High
+Proposed Mitigation
+Implement a structured department-level rollout plan with designated adoption leads in each function. Require completion of role-appropriate training and AUP acknowledgment before access is provisioned for any user type. Track adoption and training completion through the admin dashboard. Establish a contractor-specific onboarding module as a non-negotiable prerequisite for access. Report adoption metrics to leadership quarterly.
+Risk Owner: AI Governance Lead / HR
+
+Reputational Risk
+Risk Description
+When employees use Perplexity to produce content that is subsequently published, distributed externally, or shared with clients or partners, any inaccuracy, bias, or harmful content in that output carries the organization's name. This risk is elevated when employees treat AI-generated outputs as final deliverables without human editorial review. Additionally, if it becomes known through a data incident, regulatory investigation, or client inquiry that employees or contractors processed client or partner data through a third-party AI platform without authorization, the commercial and reputational consequences could be significant and lasting.
+Potential Impact
+Public trust erosion, media scrutiny, and client confidence loss if an inaccurate or harmful AI-generated output attributed to the organization reaches an external audience. Client relationship damage up to and including contract termination if unauthorized processing of client data becomes known. Long-term brand damage disproportionate to the individual incident in either scenario.
+Risk Probability: Medium
+Proposed Mitigation
+Establish a mandatory human review requirement for all content generated with Perplexity assistance intended for external distribution. Develop a clear AI disclosure policy specifying when and how AI-assisted content must be disclosed. Include explicit client and partner data restrictions in both the employee AUP and the contractor-specific addendum. Monitor audit logs for anomalous activity patterns that may indicate out-of-scope data use. Brief all client-facing teams specifically on the boundary between organizational and client data in the context of AI tool use.
+Risk Owner: Communications / Legal / AI Governance LeadSonnet 4.6 LowClaude is AI
