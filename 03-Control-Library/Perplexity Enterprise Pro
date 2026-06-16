@@ -1,0 +1,155 @@
+Develop the governance controls required before the platform can be approved for use
+
+IDENTITY & ACCESS MANAGEMENT
+Control ID: PRPLX-01
+Control Name: Single Sign-On and Multi-Factor Authentication 
+The IT Security Administrator implements PRPLX-01 by configuring Perplexity Enterprise Pro to authenticate exclusively through the organization's identity provider using SAML 2.0 single sign-on. The organization uses Okta as its identity provider to enforce SSO and require multi-factor authentication for all users at every login session, regardless of employment type. This occurs at initial platform deployment and applies continuously to all FTEs, contractors, and part-time staff. Results are reviewed by the IT Security Administrator and AI Governance Lead at quarterly access reviews. Evidence includes Okta configuration records, MFA enforcement policy documentation, SSO connection logs, and quarterly access review reports.Risk Addressed: Security Risk — Unauthorized access via compromised credentials.
+Control Owner: IT Security Administrator
+Framework Reference: NIST AI RMF: GOVERN 1.4 | NIST CSF: PR.AC-1 | ISO/IEC 42001: Clause 8.4 
+
+Control ID: PRPLX-02
+Control Name: Role-Based Access and Least Privilege 
+Provisioning Implementation:
+The IT Security Administrator implements PRPLX-02 by provisioning Perplexity Enterprise Pro access based on documented business need and role classification. The organization uses Perplexity's Security Hub and Okta role assignments to enforce least privilege access, ensuring employees receive only the platform features and data connector permissions required for their specific role. Agentic Computer access is restricted to a separately defined list of approved power users. This occurs upon onboarding for all new users and upon any role change. Results are reviewed by the AI Governance Lead and IT Security Administrator at quarterly access reviews. Evidence includes role assignment records, Security Hub permission configurations, access provisioning request approvals, and quarterly entitlement review exports. Risk Addressed: Security Risk- Overprivileged access to platform features and connected data sources
+Control Owner: IT Security Administrator / AI Governance Lead
+Framework Reference: NIST AI RMF: MAP 2.2 | NIST CSF: PR.AC-4 | ISO/IEC 42001: Clause 8.4
+
+Control ID: PRPLX-03
+Control Name: Automated User Deprovisioning via SCIM
+The IT Security Administrator implements PRPLX-03 by configuring SCIM-based automated user provisioning and deprovisioning between Okta and Perplexity Enterprise Pro. The organization uses Okta's SCIM integration to ensure that when a user's account is deactivated in Okta due to termination, role change, or contractor engagement expiration, Perplexity access is automatically revoked within the same provisioning cycle. This occurs automatically upon any HR-triggered deactivation event in Okta. Results are reviewed by the IT Security Administrator monthly to confirm no orphaned accounts exist. Evidence includes SCIM integration configuration records, Okta deprovisioning event logs, monthly orphaned account audit reports, and HR offboarding confirmation records.Risk Addressed: Security Risk — Orphaned accounts for terminated employees or expired contractor engagements
+Control Owner: IT Security Administrator
+Framework Reference: NIST AI RMF: MANAGE 2.2 | NIST CSF: PR.AC-1 | ISO/IEC 42001: Clause 8.4
+
+DATA PROTECTION
+Control ID: PRPLX-04
+Control Name: Sensitive Data and PII Upload
+Restriction Implementation:
+The AI Governance Lead implements PRPLX-04 by establishing and publishing a data classification policy that defines which data categories are prohibited from use on Perplexity Enterprise Pro, including personally identifiable information, protected health information, attorney-client privileged materials, classified information, and client or third-party confidential data. The organization uses the Perplexity Security Hub to restrict file upload permissions to roles that have completed data handling training, and uses the Acceptable Use Policy as the primary governance instrument for all remaining users. This occurs as a prerequisite to platform access for all FTEs, contractors, and part-time staff, with annual reaffirmation. Results are reviewed by the AI Governance Lead and Legal semi-annually. Evidence includes data classification policy documentation, AUP acknowledgment records, Security Hub file upload permission configurations, and training completion logs. Risk Addressed: Privacy Risk — Employees input PII, PHI, or regulated data into queries or file uploads
+Control Owner: AI Governance Lead / Legal
+Framework Reference: NIST AI RMF: MAP 5.1 | GDPR: Article 5 | ISO/IEC 42001: Clause 8.3 | EU AI Act: Article 10
+
+Control ID: PRPLX-05
+Control Name: File Connector Permission Audit and Staged 
+Rollout Implementation:
+The IT Security Administrator implements PRPLX-05 by conducting a full permission audit of all organizational file repositories, including SharePoint, Google Drive, and OneDrive, before any connector is enabled in Perplexity Enterprise Pro. The organization uses Microsoft Entra ID and Google Workspace admin consoles to verify that source-system permissions are correctly scoped prior to connector activation, and implements a staged rollout beginning with lower-sensitivity repositories. This occurs before each connector is activated in production and is repeated whenever connector configurations or source-system permissions change materially. Results are reviewed by the IT Security Administrator and AI Governance Lead before each connector goes live. Evidence includes pre-deployment permission audit reports, connector configuration records, Entra ID consent logs, and staged rollout approval documentation. Risk Addressed: Data Protection Risk — Connected file repositories expose content beyond intended scope
+Control Owner: IT Security Administrator
+Framework Reference: NIST AI RMF: MANAGE 2.4 | NIST CSF: PR.DS-5 | ISO/IEC 42001: Clause 8.4
+
+Control ID: PRPLX-06
+Control Name: Thread-Level File Retention User Disclosure
+Implementation Statement:
+The AI Governance Lead implements PRPLX-06 by including explicit guidance on Perplexity's thread-level file retention behavior in all user training materials and in the Acceptable Use Policy. The organization uses onboarding training modules and the AUP to communicate that files attached directly to search threads are retained on Perplexity's infrastructure for seven days before automatic deletion, and that files uploaded to Spaces persist until manually deleted. This occurs as part of initial onboarding for all user types and is reinforced at annual training reaffirmation. Results are reviewed by the AI Governance Lead semi-annually to confirm training materials remain accurate as the platform evolves. Evidence includes training module content records, AUP documentation, training completion logs, and semi-annual training accuracy review records.
+Risk Addressed: Data Protection Risk — Employees upload sensitive files unaware of 7-day retention window
+Control Owner: AI Governance Lead
+Framework Reference: NIST AI RMF: MAP 2.3 | GDPR: Article 5(1)(e) | ISO/IEC 42001: Clause 7.3
+
+HUMAN OVERSIGHT
+Control ID: PRPLX-07
+Control Name: Mandatory Citation Verification Standard
+Implementation Statement:
+The AI Governance Lead implements PRPLX-07 by establishing a mandatory citation verification standard within the Acceptable Use Policy, requiring that all Perplexity outputs used to inform material business decisions have their primary cited sources reviewed and confirmed by the user before the output is acted upon. The organization uses the AUP as the governance instrument and department head briefings as the reinforcement mechanism, ensuring managers communicate and model the verification standard within their teams. This occurs as a standing requirement applied to every instance where a Perplexity output informs a consequential decision, with compliance reinforced at quarterly department head governance check-ins. Results are reviewed by the AI Governance Lead and department heads quarterly. Evidence includes AUP documentation, department head briefing records, quarterly governance check-in summaries, and any incident reports related to unverified output reliance.
+Risk Addressed: Human Oversight Risk — Over-reliance on AI-generated outputs for material business decisions
+Control Owner: AI Governance Lead/Department Heads
+Framework Reference: NIST AI RMF: GOVERN 5.1, MANAGE 1.3 | ISO/IEC 42001: Clause 8.6 | EU AI Act: Article 14
+
+Control ID: PRPLX-08
+Control Name: Agentic Task Human Approval Requirement
+Implementation Statement:
+The AI Governance Lead and IT Security Administrator implement PRPLX-08 by restricting Perplexity Computer agentic feature access to a formally defined and documented list of approved power users who have completed agentic use training. The organization uses the Perplexity Security Hub to enforce feature-level access restrictions and requires that approved users review proposed agentic actions before execution in any connected production system. A permitted action scope document is defined for each connected system before Computer is enabled for that system. This occurs at initial Computer feature enablement and is reviewed whenever a new system is connected or a new user is approved for agentic access. Results are reviewed by the AI Governance Lead and IT Security Administrator quarterly. Evidence includes approved user list documentation, agentic training completion records, permitted action scope documents, Security Hub access configuration records, and agentic activity audit logs.
+Risk Addressed: Human Oversight Risk — Agentic Computer tasks executing without adequate human review
+Control Owner: IT Security Administrator / AI Governance Lead
+Framework Reference: NIST AI RMF: MANAGE 3.1, GOVERN 5.2 | ISO/IEC 42001: Clause 8.6 | EU AI Act: Article 14
+
+Control ID: PRPLX-09
+Control Name: Human Review Requirement for Externally Distributed Content
+Implementation Statement:
+The AI Governance Lead implements PRPLX-09 by establishing a mandatory human editorial review requirement for all content developed with Perplexity assistance that is intended for external distribution, including client deliverables, published communications, press materials, and partner-facing documents. The organization uses the Acceptable Use Policy and department-level communication standards to enforce this requirement, with communications and client-facing teams receiving targeted training on AI output verification and the organization's AI disclosure policy. This occurs as a standing requirement applied before any AI-assisted content is distributed externally. Results are reviewed by the AI Governance Lead and Communications team lead semi-annually. Evidence includes AUP documentation, AI disclosure policy records, communications team training records, and any incident reports related to externally distributed AI content.
+Risk Addressed: Reputational Risk — Inaccurate or harmful AI-generated content attributed to the organization
+Control Owner: AI Governance Lead / Communications
+Framework Reference: NIST AI RMF: GOVERN 5.1 | ISO/IEC 42001: Clause 8.6
+
+MONITORING & LOGGING
+Control ID: PRPLX-10
+Control Name: Audit Log Monitoring and Quarterly Review
+Implementation Statement:
+The IT Security Administrator implements PRPLX-10 by enabling and maintaining Perplexity Enterprise Pro's full audit logging capability through the Security Hub and establishing a structured quarterly review process for audit log analysis. The organization uses Perplexity's built-in audit log infrastructure to capture all user activity including queries, file uploads, connector access events, agentic actions, and administrative changes. This occurs continuously for log capture, with formal quarterly reviews conducted by the IT Security Administrator in coordination with the AI Governance Lead. Results are documented in a quarterly audit log review summary and escalated to Legal or executive leadership if anomalous activity is identified. Evidence includes audit log configuration records, quarterly review summaries, Security Hub activity exports, and escalation records where applicable.
+Risk Addressed: Security Risk / Operational Risk — Undetected unauthorized access or anomalous platform use
+Control Owner: IT Security Administrator / AI Governance Lead
+Framework Reference: NIST AI RMF: MEASURE 2.5 | NIST CSF: DE.AE-3 | ISO/IEC 42001: Clause 9.1
+
+Control ID: PRPLX-11
+Control Name: Adoption and Training Completion Tracking
+Implementation Statement:
+The AI Governance Lead implements PRPLX-11 by establishing a structured adoption tracking process using Perplexity's admin dashboard and the organization's learning management system to monitor platform adoption rates and training completion across all departments and user types. The organization uses the admin dashboard to track active users by department and the LMS to confirm AUP acknowledgment and training completion before access is provisioned. A minimum training completion threshold must be met at the department level before full access is enabled for that department's staff. This occurs continuously, with quarterly adoption reports delivered to organizational leadership. Results are reviewed by the AI Governance Lead and HR quarterly. Evidence includes admin dashboard adoption reports, LMS training completion exports, department-level access enablement records, and quarterly leadership briefing summaries.
+Risk Addressed: Operational Risk — Inconsistent adoption creating governance gaps across departments
+Control Owner: AI Governance Lead/HR
+Framework Reference: NIST AI RMF: GOVERN 3.1 | ISO/IEC 42001: Clause 7.3, 9.1
+
+THIRD-PARTY RISK
+Control ID: PRPLX-12
+Control Name: Vendor Security and Financial Posture Review
+Implementation Statement:
+The Procurement team implements PRPLX-12 by conducting an annual vendor review of Perplexity AI covering security posture, financial stability, SOC 2 Type II attestation currency, and platform continuity planning. The organization uses the vendor's published SOC 2 report, security disclosure channels, and annual contract review process to assess continued vendor viability and security standing. This occurs annually at contract renewal and additionally upon any material security incident disclosed by Perplexity. Results are reviewed by Procurement, IT Security Administrator, and AI Governance Lead annually. Evidence includes annual vendor review reports, SOC 2 attestation records, contract renewal documentation, and any incident-triggered review records.
+Risk Addressed: Third-Party/Vendor Risk — Vendor service disruption, security incident, or platform discontinuation
+Control Owner: Procurement/IT Security Administrator / AI Governance Lead
+Framework Reference: NIST AI RMF: MANAGE 4.1 | NIST CSF: ID.SC-4 | ISO/IEC 42001: Clause 8.4
+
+Control ID: PRPLX-13
+Control Name: Zero Data Retention Policy Contractual Confirmation
+Implementation Statement:
+The Legal team implements PRPLX-13 by confirming in writing at contract execution that Perplexity's Zero Data Retention policy applies to all enterprise query data processed through the platform, including data routed to third-party AI model providers such as OpenAI, Anthropic, and Google. The organization uses the executed vendor contract and Data Processing Agreement as the primary instruments for this confirmation, with Legal reviewing third-party model data handling terms specifically. This occurs at initial contract execution and at each annual renewal. Results are reviewed by Legal and the AI Governance Lead at each contract review cycle. Evidence includes the executed vendor contract, Data Processing Agreement, ZDR policy confirmation documentation, and annual contract renewal review records.
+Risk Addressed: Third-Party/Vendor Risk — Third-party AI model providers accessing or training on enterprise data
+Control Owner: Legal/Procurement
+Framework Reference: NIST AI RMF: MAP 5.2 | GDPR: Article 28 | ISO/IEC 42001: Clause 8.4
+
+RESPONSIBLE AI
+Control ID: PRPLX-14
+Control Name: AI Model Enablement and Restriction Policy
+Implementation Statement:
+The IT Security Administrator and AI Governance Lead implement PRPLX-14 by reviewing all AI models available within Perplexity Enterprise Pro through the Security Hub and establishing an approved model list based on organizational risk tolerance, data handling requirements, and regulatory obligations. The organization uses the Perplexity Security Hub's model enablement controls to restrict access to approved models only, disabling any model that does not meet the organization's standards. This occurs at initial platform deployment and is reviewed whenever Perplexity adds new models to the platform or when organizational risk tolerance changes. Results are reviewed by the AI Governance Lead and IT Security Administrator semi-annually. Evidence includes the approved model list documentation, Security Hub model configuration records, model review summaries, and any records of model restriction actions taken.
+Risk Addressed: Model Governance Risk — Use of unapproved or high-risk AI models without organizational awareness
+Control Owner: IT Security Administrator / AI Governance Lead
+Framework Reference: NIST AI RMF: MAP 1.5, GOVERN 1.2 | ISO/IEC 42001: Clause 8.5 | EU AI Act: Article 53
+
+Control ID: PRPLX-15
+Control Name: Acceptable Use Policy for Full Enterprise Population
+Implementation Statement:
+The AI Governance Lead implements PRPLX-15 by authoring, publishing, and maintaining an Acceptable Use Policy specifically governing organizational use of Perplexity Enterprise Pro, with provisions addressing all three user populations: full-time employees, contractors, and part-time staff. The organization uses the AUP as the primary governance instrument covering prohibited data types, citation verification requirements, external content distribution standards, connector usage restrictions, agentic use limitations, and contractor-specific obligations. AUP acknowledgment is enforced as a non-negotiable prerequisite for platform access provisioning for all user types. This occurs at onboarding for all users, with annual reaffirmation required for continued access. Results are reviewed by the AI Governance Lead and Legal semi-annually and updated whenever material platform changes occur. Evidence includes the published AUP, acknowledgment records by user type, annual reaffirmation logs, and AUP version history documentation.
+Risk Addressed: Operational Risk / Privacy Risk / Reputational Risk — Ungoverned platform use across all employee types
+Control Owner: AI Governance Lead / Legal
+Framework Reference: NIST AI RMF: GOVERN 1.1, GOVERN 6.1 | ISO/IEC 42001: Clause 5.2, 7.2
+
+INCIDENT RESPONSE
+Control ID: PRPLX-16
+Control Name: AI Incident Identification and Escalation Procedure
+Implementation Statement:
+The AI Governance Lead implements PRPLX-16 by establishing and publishing a Perplexity-specific AI incident identification and escalation procedure that documents five platform-specific incident types: sensitive data uploaded to a thread, unauthorized connector access, AI output causing a material business error, agentic task taking an unintended action, and suspected prompt injection. The organization uses the incident procedure document, the IT helpdesk ticketing system, and direct escalation paths to Legal and executive leadership as the response infrastructure. This occurs whenever any user identifies or suspects an AI-related incident, with initial triage completed within 24 hours of report. Results are reviewed by the AI Governance Lead monthly for incident pattern analysis and reported to leadership quarterly. Evidence includes the published incident procedure document, helpdesk incident tickets, escalation records, Legal notification records where applicable, and quarterly incident summary reports.
+Risk Addressed: All risk categories — Undetected or improperly handled AI-related data or operational incidents
+Control Owner: AI Governance Lead / IT Security Administrator / Legal
+Framework Reference: NIST AI RMF: MANAGE 3.2 | NIST CSF: RS.CO-2 | ISO/IEC 42001: Clause 10.1
+
+COMPLIANCE & REGULATORY REQUIREMENTS
+Control ID: PRPLX-17
+Control Name: HIPAA Business Associate Agreement Confirmation
+Implementation Statement:
+The Legal team implements PRPLX-17 by confirming the existence and execution status of a Business Associate Agreement with Perplexity AI before any PHI-adjacent use case is authorized on the platform. The organization uses the executed BAA as the contractual prerequisite for any healthcare-related data processing activity, and maintains a PHI prohibition in the Acceptable Use Policy for all use cases pending BAA confirmation. This occurs before platform go-live and is reviewed at each annual contract renewal to confirm the BAA remains current. Results are reviewed by Legal and the AI Governance Lead at contract execution and annually thereafter. Evidence includes the executed BAA document, AUP PHI prohibition language, Legal review records, and annual BAA currency confirmation at contract renewal.
+Risk Addressed: Compliance Risk — PHI processing without a signed BAA triggering HIPAA liability
+Control Owner: Legal/Compliance
+Framework Reference: HIPAA Privacy Rule: 45 CFR §164.502 | NIST AI RMF: GOVERN 1.7 | ISO/IEC 42001: Clause 9.1
+
+Control ID: PRPLX-18
+Control Name: EU AI Act Transparency and GPAI Documentation
+Implementation Statement:
+The AI Governance Lead implements PRPLX-18 by documenting all General Purpose AI models in use through Perplexity Enterprise Pro, conducting a data residency review with Perplexity to confirm available options for EU-exposed data, and ensuring that all employees interacting with Perplexity outputs are informed that they are engaging with AI-generated content as required by EU AI Act transparency provisions. The organization uses the AI system inventory, the approved model list from PRPLX-14, and the employee communication program to satisfy documentation and transparency requirements. This occurs at initial deployment and is reviewed semi-annually or whenever Perplexity adds new GPAI models to the platform. Results are reviewed by Legal and the AI Governance Lead semi-annually. Evidence includes GPAI model documentation, data residency review records, employee transparency communication records, and semi-annual compliance review summaries.
+Risk Addressed: Compliance Risk — EU AI Act obligations from GPAI model use with cross-border data exposure
+Control Owner: Legal/AI Governance Lead
+Framework Reference: EU AI Act: Articles 50, 51, 53 | NIST AI RMF: MAP 1.5 | ISO/IEC 42001: Clause 4.2
+
+CHANGE MANAGEMENT
+Control ID: PRPLX-19
+Control Name: Platform Change Monitoring and Governance Package Update Trigger
+Implementation Statement:
+The AI Governance Lead implements PRPLX-19 by establishing a formal process for monitoring Perplexity's platform release notes, security advisories, and policy updates, and triggering a governance package review whenever a material change is identified. The organization uses Perplexity's published release channels and the AI Governance Lead's subscription to vendor communications as the monitoring mechanism, with a defined materiality threshold that includes new AI model additions, new connector capabilities, changes to data retention policies, and security incident disclosures. This occurs continuously for monitoring, with a formal governance package review initiated within 30 days of any material change identification. Results are reviewed by the AI Governance Lead with Legal and IT as needed. Evidence includes platform change monitoring logs, materiality assessment records, governance package version history, and update review documentation.
+Risk Addressed: Operational Risk / Compliance Risk — Governance documentation becoming outdated as platform evolves
+Control Owner: AI Governance Lead
+Framework Reference: NIST AI RMF: MANAGE 4.2 | ISO/IEC 42001: Clause 10.2
