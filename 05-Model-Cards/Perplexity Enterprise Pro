@@ -1,0 +1,127 @@
+MODEL CARD: Perplexity Enterprise Pro 
+Platform Name Perplexity Enterprise Pro
+Vendor Perplexity AI, Inc. Headquarters: San Francisco, California Founded: 2022 Enterprise Tier Launch: April 2024 Pricing: $40 per seat per month SOC 2 Type II Attested: 2026 Website: perplexity.ai
+Business Owner 
+To be designated by organizational leadership prior to platform go-live. The Business Owner is the senior organizational leader accountable for the strategic decision to adopt and maintain Perplexity Enterprise Pro. This individual approves the platform for use, owns the business justification, and is the executive escalation point for all governance decisions related to the platform.
+Governance Owner 
+AI Governance Lead, Office of AI Governance. The Governance Owner is responsible for authoring and maintaining all governance documentation associated with this platform including the Risk Assessment, Control Library, Acceptable Use Policy, and this Model Card. The Governance Owner serves as the primary point of contact for auditors, regulators, and legal counsel on all matters related to this platform's governance posture.
+Platform Purpose
+ Perplexity Enterprise Pro is an AI-powered research and answer engine that combines real-time web retrieval with internal organizational document search to deliver citation-backed, source-verified answers to enterprise users. It is not a standalone AI chatbot or a static knowledge base. Every response is grounded in live retrieved content and accompanied by numbered citations that allow users to verify the source of every claim. The platform operates on a multi-model architecture, dynamically routing queries across GPT-5.2, Claude Sonnet, Gemini, and Perplexity's proprietary Sonar model depending on the task type. It is accessible via web browser, desktop application, and mobile application and authenticates through the organization's existing identity provider via SAML 2.0 single sign-on.
+
+Intended Use Cases 
+Perplexity Enterprise Pro is authorized for the following use cases across all full-time employees, contractors, and part-time staff:
+Real-time research and information synthesis for business decision support including competitive intelligence, regulatory monitoring, policy research, and market analysis.
+Internal document search combining organizational file repositories connected via SharePoint, Google Drive, OneDrive, Box, or Dropbox with live web retrieval in a single query.
+Deep research report generation for complex, multi-source questions requiring structured, cited deliverables.
+Document and file analysis including summarization, synthesis, and question-answering against uploaded PDFs, Word documents, and Excel files.
+Executive and leadership briefing support including rapid background research, stakeholder preparation, and strategic landscape scanning.
+Legal and compliance background research including regulatory tracking, case background research, and policy benchmarking.
+HR and people operations research including benefits benchmarking, policy research, and workforce analytics.
+IT and security research including threat intelligence, vulnerability research, and vendor evaluation.
+Agentic task execution across connected business systems including Slack, Salesforce, Snowflake, HubSpot, and Datadog, restricted to approved power users only. All agentic actions require user confirmation before execution to mitigate Uncontrolled Agentic Execution.
+Prohibited Use Cases 
+The following use cases are explicitly prohibited for all users regardless of employment type:
+Input of personally identifiable information into queries or file uploads including employee records, customer data, or any data subject to GDPR, CCPA, or other applicable privacy regulations. Violation constitutes a Data Leakage / PII Exposure event.
+Input or upload of Protected Health Information unless a signed Business Associate Agreement with Perplexity AI is confirmed and in effect. Violation constitutes a HIPAA Non-Compliance event.
+Input of attorney-client privileged communications, litigation strategy, or legal work product. Violation constitutes a Data Leakage / PII Exposure event.
+Input of classified, export-controlled, or government-restricted information. Violation constitutes a Data Leakage / PII Exposure event.
+Input of client or third-party confidential data without explicit authorization. Violation constitutes a Hallucinated Output Distribution / Unauthorized Data Leakage event.
+Distribution of AI-generated outputs externally without organizational review and citation verification. Violation constitutes a Hallucinated Output Distribution event.
+Use of the Computer agentic feature by any user not on the formally approved power user list. Violation constitutes an Uncontrolled Agentic Execution event.
+Connection of personal accounts, personal cloud storage, or unauthorized third-party systems to the platform. Violation constitutes a Least Privilege Violation event.
+Use of any AI model not on the organizationally approved model list. Violation constitutes a Hallucination risk event.
+Use of consumer-grade AI tools in place of this platform for organizational work. Violation constitutes a Shadow AI Use event.
+
+Data Considerations
+Data Inputs Perplexity Enterprise Pro processes three categories of data inputs: live web content retrieved in real time, internal organizational documents accessed through connected file repositories, and user-submitted queries and file uploads. Users may submit text queries, upload files including PDFs and Word documents, and connect to internal repositories including SharePoint, Google Drive, OneDrive, Box, and Dropbox.
+Data Retention Files uploaded directly to a search thread are automatically deleted after seven days. Employees who attach sensitive documents without awareness of this retention window create an Unauthorized Data Retention event. Files uploaded to Spaces persist until manually deleted by an authorized user. Query data is subject to Perplexity's Zero Data Retention policy under the enterprise agreement, meaning enterprise query data is not retained or used to train AI models. Any breach of this policy constitutes a Zero Data Retention Breach event requiring immediate escalation to Legal.
+Data Storage and Encryption All data is encrypted at rest using AES-256 and in transit using TLS 1.3. Customer data is stored in dedicated per-tenant infrastructure on AWS. Customer-managed encryption key options are available at the enterprise tier.
+Third-Party Model Data Handling Queries may be routed through third-party AI model providers including OpenAI, Anthropic, and Google. Perplexity maintains formal agreements with each provider prohibiting access to or training on enterprise query data. Any breach of these agreements constitutes a Zero Data Retention Breach event.
+DeepSeek Data Handling The DeepSeek R1 open-weights model runs exclusively on Perplexity's U.S.-based infrastructure. No data is transmitted to DeepSeek servers, eliminating cross-border data transfer risk associated with this model.
+Regulatory Considerations GDPR-compliant data handling with a Data Processing Agreement available. CCPA compliance confirmed. HIPAA Non-Compliance risk remains active until a signed Business Associate Agreement is executed. EU AI Act obligations apply to the organization as a deploying entity given the use of GPAI models including GPT-5.2, Claude Sonnet, and Gemini.
+
+Top Risks 
+The following eight risks were identified in the AI Risk Assessment (02-Risk-Assessments, Version 2.0).
+
+Least Privilege Violation / Prompt Injection: 
+Misconfigured connector permissions may allow employees to access internal documents beyond their authorized scope. Malicious instructions embedded in web or internal content processed by the platform may override AI model behavior through Prompt Injection, causing harmful outputs or Uncontrolled Agentic Execution. 
+Risk Probability: Medium
+
+Data Leakage / PII Exposure: 
+Employees, contractors, or part-time staff may input personally identifiable information or regulated data into queries or file uploads, creating unauthorized data processing exposure under GDPR, CCPA, or HIPAA.
+Risk Probability: Medium
+
+HIPAA Non-Compliance / EU AI Act Violation: 
+Processing of Protected Health Information without a signed Business Associate Agreement creates HIPAA Non-Compliance liability. Use of GPAI models without meeting EU AI Act transparency and documentation obligations creates an EU AI Act Violation. 
+Risk Probability: Medium
+
+Vendor Lock-In / Zero Data Retention Breach:
+Single-vendor dependency creates productivity and continuity risk in a service disruption. The inability to independently verify the Zero Data Retention policy beyond contractual assurance creates potential Zero Data Retention Breach exposure. 
+Risk Probability: Low
+
+Unauthorized Data Retention / Least Privilege Violation:
+Seven-day thread-level file retention creates an Unauthorized Data Retention window for sensitive documents uploaded without awareness of this behavior. Misconfigured source-system permissions may result in a Least Privilege Violation where users access content beyond their authorized scope. 
+Risk Probability: Medium
+
+Hallucination / Uncontrolled Agentic Execution:
+Hallucination is a documented and inherent characteristic of all large language models powering this platform. Employees may act on hallucinated outputs without citation verification leading to consequential decisions made on fabricated information. Uncontrolled Agentic Execution may result in unintended modifications to production data in connected systems including Salesforce, Snowflake, or HubSpot. 
+Risk Probability: High
+
+Shadow AI Use / Insufficient Governance Onboarding:
+Inconsistent platform adoption and insufficient governance onboarding for contractors and part-time staff creates blind spots where employees continue Shadow AI Use on ungoverned consumer platforms outside the organization's visibility and control. 
+Risk Probability: High
+
+Hallucinated Output Distribution / Unauthorized Data Leakage:
+Hallucinated or harmful AI-generated content distributed externally without citation verification and organizational approval carries significant reputational and legal risk. Unauthorized Data Leakage of client or partner data discovered through a data incident or regulatory inquiry creates significant commercial and reputational consequences. 
+Risk Probability: Medium
+
+Required Controls
+The following controls from the AI Control Library (03-Control-Library, Version 2.0) are required before this platform can be approved for enterprise use.
+
+PRPLX-01: SSO and MFA Enforcement Addresses: Least Privilege Violation / Prompt Injection Okta SAML 2.0 SSO and MFA configured and active for all FTEs, contractors, and part-time staff before any access is granted.
+PRPLX-02: Role-Based Access and Least Privilege Provisioning Addresses: Least Privilege Violation / Prompt Injection All users provisioned with least privilege access based on documented role and business need. Agentic Computer access restricted to approved power users only to prevent Uncontrolled Agentic Execution.
+PRPLX-03: Automated User Deprovisioning via SCIM Addresses: Least Privilege Violation / Prompt Injection SCIM integration between Okta and Perplexity configured and tested. Access automatically revoked upon HR-triggered deactivation eliminating orphaned account Least Privilege Violations.
+PRPLX-04: Sensitive Data and PII Upload Restriction Addresses: Data Leakage / PII Exposure Data classification policy published. Security Hub upload restrictions configured. AUP acknowledgment required before access provisioned for all user types.
+PRPLX-05: Thread-Level File Retention Disclosure Addresses: Unauthorized Data Retention / Least Privilege Violation Seven-day thread-level retention behavior documented in training materials and AUP. All users trained before access granted to prevent Unauthorized Data Retention events.
+PRPLX-06: File Connector Permission Audit and Staged Rollout Addresses: Unauthorized Data Retention / Least Privilege Violation Full permission audit of all repositories completed and documented before any connector is enabled to prevent Least Privilege Violations through misconfigured source-system permissions.
+PRPLX-07: Mandatory Citation Verification Standard Addresses: Hallucination / Uncontrolled Agentic Execution Citation verification standard included in AUP. All users required to verify primary cited sources before any output informs a material decision to mitigate Hallucination risk at point of use.
+PRPLX-08: Uncontrolled Agentic Execution Prevention Addresses: Hallucination / Uncontrolled Agentic Execution Approved power user list documented. Computer feature restricted in Security Hub. User confirmation of action scope required before any agentic action executes in a connected production system to prevent Uncontrolled Agentic Execution.
+PRPLX-09: Hallucinated Output Distribution Prevention Addresses: Hallucinated Output Distribution / Unauthorized Data Leakage AI disclosure policy published. Citation verification and organizational approval required before any AI-assisted content is distributed externally to prevent Hallucinated Output Distribution.
+PRPLX-10: Audit Log Monitoring and Quarterly Review Addresses: Shadow AI Use / Insufficient Governance Onboarding Audit logging enabled in Security Hub from day one. Quarterly review schedule established. Data Leakage, Least Privilege Violation, and Uncontrolled Agentic Execution events escalated within 48 hours.
+PRPLX-11: Adoption and Training Completion Tracking Addresses: Shadow AI Use / Insufficient Governance Onboarding Admin dashboard and LMS tracking configured before go-live. Minimum training completion threshold enforced at department level to eliminate Shadow AI Use blind spots.
+PRPLX-12: Annual Vendor Security and Financial Posture Review Addresses: Vendor Lock-In / Zero Data Retention Breach First vendor review scheduled at contract execution. Annual cadence documented and assigned to Procurement to monitor Vendor Lock-In risk.
+PRPLX-13: Zero Data Retention Policy Contractual Confirmation Addresses: Vendor Lock-In / Zero Data Retention Breach Zero Data Retention policy confirmed in writing in executed vendor contract before go-live. Zero Data Retention Breach protections contractually enforceable before any data is processed.
+PRPLX-14: AI Model Enablement and Restriction Policy Addresses: Hallucination / Uncontrolled Agentic Execution Approved model list documented. Security Hub model restrictions configured. Unapproved models disabled before go-live to control Hallucination risk profiles across the model pool.
+PRPLX-15: Acceptable Use Policy for Full Enterprise Population Addresses: Shadow AI Use / Insufficient Governance Onboarding AUP published with provisions for FTEs, contractors, and part-time staff. Acknowledgment required before any access provisioned. Primary instrument for eliminating Shadow AI Use across the enterprise.
+PRPLX-16: AI Incident Identification and Escalation Procedure Addresses: Hallucinated Output Distribution / Unauthorized Data Leakage Incident procedure published covering all five platform-specific incident types including Data Leakage, Least Privilege Violation, Hallucination, Uncontrolled Agentic Execution, and Prompt Injection. Communicated to all users before go-live.
+PRPLX-17: HIPAA Business Associate Agreement Confirmation Addresses: HIPAA Non-Compliance / EU AI Act Violation BAA confirmed and executed before any PHI-adjacent use authorized. HIPAA Non-Compliance risk remains active and PHI use prohibited until BAA is executed.
+PRPLX-18: EU AI Act Transparency and GPAI Documentation Addresses: HIPAA Non-Compliance / EU AI Act Violation All GPAI models documented. Employee transparency communications issued. Data residency review completed before go-live to address EU AI Act Violation risk.
+PRPLX-19: Platform Change Monitoring and Governance Update Trigger Addresses: Shadow AI Use / Insufficient Governance Onboarding AI Governance Lead subscribed to Perplexity release channels. Material platform changes including new models, connector updates, and Zero Data Retention policy changes trigger governance review within 30 days.
+PRPLX-20: Contractor and Part-Time Staff Governance Onboarding Addresses: Shadow AI Use / Insufficient Governance Onboarding Contractor onboarding module published in LMS. Enforced as hard prerequisite in access provisioning workflow. No contractor or part-time staff access granted without completion. Primary control for Insufficient Governance Onboarding risk.
+
+Citation Verification and Output Validation Requirements 
+All Perplexity outputs used to inform a material business decision require citation verification before the output is acted upon. Hallucination is an inherent characteristic of all large language models powering this platform. Citation presence does not guarantee accuracy. Every employee, contractor, and part-time staff member is individually accountable for the accuracy of work product that incorporates Perplexity outputs. Hallucination does not transfer accountability away from the user.
+All AI-generated content intended for external distribution requires citation verification and organizational approval before distribution to prevent Hallucinated Output Distribution. AI-generated content is never a final external deliverable without this validation step confirmed.
+All Computer agentic feature actions require user confirmation of action scope before execution in any connected production system. Uncontrolled Agentic Execution is a High probability risk. No agentic action may bypass user confirmation under any circumstance. Any unexpected agentic behavior constitutes an Uncontrolled Agentic Execution event and must be reported to IT immediately.
+
+Monitoring Requirements 
+The following monitoring activities are required on an ongoing basis following platform go-live:
+Audit Log Monitoring Full audit logging enabled in the Security Hub from day one. The IT Security Administrator conducts formal quarterly reviews covering all queries, file uploads, connector access events, agentic actions, and administrative changes. Any activity indicating Data Leakage / PII Exposure, Least Privilege Violation, Prompt Injection, or Uncontrolled Agentic Execution is escalated to Legal and executive leadership within 48 hours.
+Adoption and Training Tracking The AI Governance Lead monitors platform adoption rates and training completion across all departments and user types continuously. Departments falling below the minimum training completion threshold have access suspended pending remediation. Shadow AI Use risk increases directly in proportion to low adoption and Insufficient Governance Onboarding. Quarterly adoption reports delivered to leadership.
+Connector Permission Reviews All connected file repository permissions reviewed quarterly to confirm least privilege access is maintained. Any permission scope creep identified constitutes a Least Privilege Violation event and triggers immediate remediation.
+Zero Data Retention and Vendor Monitoring The AI Governance Lead maintains an active subscription to Perplexity's release notes, security advisories, and policy updates. Any material change to data retention policies or third-party model provider agreements triggers a governance review within 30 days. A disclosed security incident at the vendor level triggers an immediate Zero Data Retention Breach exposure assessment.
+Incident Pattern Analysis The AI Governance Lead reviews all AI-related incident reports monthly. Incidents are categorized by named risk: Hallucination, Data Leakage / PII Exposure, Least Privilege Violation, Prompt Injection, Uncontrolled Agentic Execution, Shadow AI Use, Unauthorized Data Retention, or Hallucinated Output Distribution / Unauthorized Data Leakage. Patterns indicating systemic risk trigger an immediate control review and escalation to leadership.
+
+Semi-Annual Governance Review The AI Governance Lead conducts a full semi-annual review of this Model Card, the Risk Assessment, and the Control Library. All documents updated within 30 days of the review. Business Owner annual reaffirmation required at contract renewal.
+
+Approval Recommendation Conditionally Approved
+Based on the completed Platform Assessment, Risk Assessment (02-Risk-Assessments), and AI Control Library (03-Control-Library), the Office of AI Governance recommends Conditional Approval for enterprise-wide deployment of Perplexity Enterprise Pro across all full-time employees, contractors, and part-time staff, subject to the following conditions being met prior to go-live:
+All 20 PRPLX controls must be implemented and evidence confirmed by the IT Security Administrator and AI Governance Lead before any user access is provisioned.
+The Acceptable Use Policy must be published and acknowledgment collected from all users before access is granted. No exceptions for contractors or part-time staff. Shadow AI Use / Insufficient Governance Onboarding is rated High probability and is directly mitigated by this requirement.
+The Business Associate Agreement status with Perplexity AI must be confirmed by Legal before go-live. HIPAA Non-Compliance risk remains unmitigated until the BAA is executed. PHI-adjacent use cases remain prohibited until that condition is met.
+The Zero Data Retention policy must be confirmed in writing in the executed vendor contract before go-live. A Zero Data Retention Breach cannot be remediated after the fact. This confirmation is a non-negotiable prerequisite.
+The contractor and part-time staff governance onboarding module must be live in the LMS and enforced as a hard prerequisite in the access provisioning workflow before any non-FTE user is granted access. Shadow AI Use / Insufficient Governance Onboarding is rated High probability and is directly driven by this population.
+Citation verification requirements for Hallucination mitigation, organizational approval requirements for Hallucinated Output Distribution prevention, and user confirmation requirements for Uncontrolled Agentic Execution prevention must be documented in the AUP, communicated to all department heads, and confirmed as understood before go-live.
+Once all conditions are met and evidence is documented, platform status moves from Conditionally Approved to Approved for enterprise use. This Model Card must be reviewed and reaffirmed semi-annually by the AI Governance Lead and annually by the Business Owner.
+
+Prepared by: Office of AI Governance Date: June 2026 Next 
