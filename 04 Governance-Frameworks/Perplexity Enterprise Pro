@@ -6,21 +6,27 @@ The organization is adopting Perplexity Enterprise Pro to consolidate fragmented
 
 SECTION 2: GOVERNANCE STRUCTURE (RACI)
 The following RACI documents accountability for governing Perplexity Enterprise Pro across the organization. R = Responsible, A = Accountable, C = Consulted, I = Informed.
+
 Business Owner
 Accountable for the strategic decision to adopt and maintain Perplexity Enterprise Pro. Owns the business justification for the platform. Approves the platform for enterprise use. Reviews and reaffirms the Model Card annually. Serves as the executive escalation point for governance decisions. Informed of all High probability risk events including Hallucination / Uncontrolled Agentic Execution and Shadow AI Use / Insufficient Governance Onboarding. Receives quarterly adoption and monitoring reports.
 RACI: Accountable
+
 AI Governance Lead, Office of AI Governance
 Responsible for all governance documentation including the Platform Assessment, Risk Assessment, AI Control Library, Model Card, Acceptable Use Policy, and this Governance Framework. Authors, maintains, and enforces governance controls across all user populations including FTEs, contractors, and part-time staff. Conducts semi-annual governance reviews. Reviews audit logs quarterly in coordination with IT Security. Categorizes and escalates all AI-related incidents by named risk. Serves as the primary point of contact for auditors, regulators, and legal counsel.
 RACI: Responsible
+
 IT Security Administrator
 Responsible for implementing and maintaining all technical security controls including SSO and MFA enforcement, least privilege provisioning, SCIM-based deprovisioning, Security Hub configuration, model enablement restrictions, audit log capture, and connector permission management. Conducts formal quarterly audit log reviews. Escalates Least Privilege Violation, Prompt Injection, Data Leakage, and Uncontrolled Agentic Execution events to Legal and executive leadership within 48 hours.
 RACI: Responsible / Consulted
+
 Privacy and Legal
 Consulted on all data handling decisions including Data Leakage / PII Exposure controls, HIPAA Non-Compliance risk mitigation, EU AI Act Violation obligations, and Zero Data Retention Breach protections. Responsible for confirming and executing the Business Associate Agreement before any PHI-adjacent use is authorized. Reviews and confirms the Data Processing Agreement and Zero Data Retention policy at contract execution and annual renewal. Escalation point for all regulatory exposure events.
 RACI: Consulted / Responsible for legal instruments
+
 Platform Owner / IT Administrator
 Responsible for day-to-day platform administration including user provisioning, connector configuration, Security Hub settings management, and LMS training tracking. Implements technical controls as directed by the AI Governance Lead and IT Security Administrator. Manages the access provisioning workflow ensuring AUP acknowledgment and training completion are enforced as hard prerequisites before any access is granted.
 RACI: Responsible
+
 Department Heads and Managers
 Accountable for enforcing AUP compliance within their teams. Responsible for communicating citation verification requirements for Hallucination mitigation, organizational approval requirements for Hallucinated Output Distribution prevention, and user confirmation requirements for Uncontrolled Agentic Execution prevention to all direct reports. Receive quarterly governance check-in summaries. Escalate suspected misuse or AI-related incidents to IT and the AI Governance Lead immediately.
 RACI: Accountable at department level / Informed
